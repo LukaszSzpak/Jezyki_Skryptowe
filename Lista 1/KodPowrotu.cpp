@@ -8,26 +8,25 @@
 
 int toInt(char *input) {
     int code = atoi(input);
-    if (code == 0)
+    if (code == 0 && input[0] != '0')
         code = 12;
     return code;
 }
 
 int main (int argc, char *argv[], char *env[]) {
     int code = 0;
-    char buffer[33];
-    bool shouldIPrint = 1;
+    bool shouldIPrint = true;
 
-    if (argc > 2)
-        if (argv[2][0] == '/' && (argv[2][1] == 's' || argv[2][1] == 'S'))
-            shouldIPrint = 0;
+    if (argc >= 2)
+        if (argv[1][0] == '/' && (argv[1][1] == 's' || argv[1][1] == 'S'))
+            shouldIPrint = false;
 
     if (argc > 3)
         code = 13;
-    else if (argc == 2 && !shouldIPrint)
+    else if ((argc == 2 && !shouldIPrint) || argc == 1)
         code = 11;
     else {
-        code = toInt(argv[1]);
+        code = toInt(argv[2]);
     }
 
     if(shouldIPrint) {
