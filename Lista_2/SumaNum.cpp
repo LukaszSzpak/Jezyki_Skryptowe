@@ -21,9 +21,7 @@ int main() {
             for (std::string res; iss >> res; ) {
                 try {
                     sum += std::stof(res);
-                } catch (std::invalid_argument) {
-
-                }
+                } catch (std::invalid_argument&) {}
             }
         }
     }
