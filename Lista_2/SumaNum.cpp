@@ -8,7 +8,6 @@
 
 
 int main() {
-
     std::ifstream myFile;
     std::string myStrign;
     float sum = 0;

@@ -11,7 +11,6 @@ int toInt(char *input) {
 }
 
 int main(int argc, char* argv[]) {
-
     std::ifstream myFile;
     std::string myStrign;
     std::vector< std::vector<std::string> > myVec;
