@@ -1,47 +1,33 @@
 #include <iostream>
-#include <fstream>
-#include <vector>
+#include <string>
 #include <sstream>
+#include <vector>
 
-int toInt(char *input) {
-    int code = atoi(input);
-    if (code == 0 && input[0] != '0')
-        code = -1;
-    return code;
+long toInt(const char *input) {
+    try {
+        long code = strtol(input, nullptr, 10);
+        return code;
+    } catch (std::invalid_argument&) {}
+
+    return -1;
 }
 
 int main(int argc, char* argv[]) {
-    std::ifstream myFile;
-    std::string myStrign;
-    std::vector< std::vector<std::string> > myVec;
 
-    myFile.open("Zakup.txt");
+    for (std::string myStrign; std::getline(std::cin, myStrign); ) {
+        std::vector<std::string> tempVec;
+        std::istringstream iss(myStrign);
+        for (std::string res; iss >> res; )
+            tempVec.push_back(res);
 
-    if (myFile.is_open()) {
-        while (getline(myFile, myStrign)) {
-            std::vector<std::string> tempVec;
-            std::istringstream iss(myStrign);
-            for (std::string res; iss >> res; )
-                tempVec.push_back(res);
+        for (int i = 1; i < argc; i++) {
+            long col = toInt(argv[i]);
 
-            myVec.push_back(tempVec);
+            if (col > -1 && col < tempVec.size())
+                std::cout << tempVec[col] << "\t";
         }
+        std::cout << "\n";
     }
-
-    if (!myVec.empty()) {
-        for (int i = 0; i < myVec.size(); i++) {
-            for (int j = 1; j < argc; j++) {
-                int col = toInt(argv[j]);
-
-                if (col > -1 && col < myVec[0].size()) {
-                    std::cout << myVec[i][j]<<"\t";
-                }
-            }
-            std::cout << "\n";
-        }
-    }
-
-
 
     return 0;
 }
