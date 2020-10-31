@@ -3,5 +3,5 @@ def isPalindrome(word):
 
 
 if __name__ == '__main__':
-    line = raw_input("Put your word: ")
+    line = input("Put your word: ")
     print (str(isPalindrome(line)))
