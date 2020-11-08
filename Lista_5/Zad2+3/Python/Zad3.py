@@ -5,10 +5,10 @@ MYFILENAME = '../Covid19.txt'
 
 if __name__ == '__main__':
     my_file = open(MYFILENAME, "r")
-    start_time = time.time()
 
     sum_ = 0
     country = input('Write your country: ')
+    start_time = time.time()
 
     for line in my_file:
         word_list = line.split()
