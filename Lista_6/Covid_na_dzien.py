@@ -3,8 +3,8 @@ class Covid_na_dzien:
         self.__day = day
         self.__month = month
         self.__year = year
-        self.__cases = cases
-        self.__deaths = deaths
+        self.__cases = int(cases)
+        self.__deaths = int(deaths)
 
     def get_date(self):
         return self.__day + '/' + self.__month + '/' + self.__year + '\t'
@@ -17,8 +17,8 @@ class Covid_na_dzien:
 
     def __str__(self):
         return self.__day + '/' + self.__month + '/' + self.__year + '\t' \
-               + self.__cases + '\t' \
-               + self.__deaths
+               + str(self.__cases) + '\t' \
+               + str(self.__deaths)
 
     @classmethod
     def from_line(cls, line):
