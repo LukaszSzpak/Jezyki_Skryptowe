@@ -59,6 +59,9 @@ class Przypadki_kraj:
             return True
         return False
 
+    def get_country_code(self):
+        return self.country_code
+
     @classmethod
     def from_line(cls, line):
         data_from_line = line.split()
