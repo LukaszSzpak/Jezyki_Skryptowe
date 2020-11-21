@@ -1,4 +1,6 @@
 # coding=utf-8
+from itertools import islice
+
 from LevSim import calc_lev_sim
 
 LEV_LEVEL_NAME = 2
@@ -22,14 +24,20 @@ class Nazwa_krajow:
     def add_country_line(self, line):
         line_data = line.split()
 
-        if len(line_data) >= 11:
+        if len(line_data) is 12:
             return self.add_country(line_data[8], line_data[6], line_data[10])
+
+    def add_from_file(self, file_path):
+        open_file = open(file_path, "r")
+
+        for line in islice(open_file, 1, None):
+            self.add_country_line(line)
 
     def get_country_name(self, code):
         try:
             return self.__country_dict[code][0]
         except KeyError:
-            return None
+            return 'Brak'
 
     def get_code_for_country(self, country):
         temp_country_dict = {}
