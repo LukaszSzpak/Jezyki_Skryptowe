@@ -7,6 +7,7 @@ class Przypadki_kraj:
         self.__day_list = []
         self.__cases_sum = 0
         self.__deaths_sum = 0
+        self.__worst_day = None
 
     def __str__(self):
         return self.country_code + "\t" \
@@ -61,6 +62,9 @@ class Przypadki_kraj:
 
     def get_country_code(self):
         return self.country_code
+
+    def get_worst_day(self):
+        return (self.__worst_day.get_date(), self.__worst_day.get_deaths()) if self.__worst_day else None
 
     @classmethod
     def from_line(cls, line):
