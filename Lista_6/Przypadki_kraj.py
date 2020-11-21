@@ -34,7 +34,10 @@ class Przypadki_kraj:
         return True
 
     def __check_and_swap_worst_day(self, day):
-        if day.get_deaths() > self.__worst_day.get_deaths():
+        if self.__worst_day:
+            if day.get_deaths() > self.__worst_day.get_deaths():
+                self.__worst_day = day
+        else:
             self.__worst_day = day
 
     def add_day_line(self, line):
@@ -97,7 +100,8 @@ if __name__ == '__main__':
     ob1.add_day_data("23.04.2020", 50000, 200)
     ob1.add_day_data("25.04.2020", 100, 10)
 
-    ob2 = Przypadki_kraj.from_line("04.08.2020	4	8	2020	37	4	Afghanistan	AF	AFG	38041757	Asia	2,97567749")
+    ob2 = Przypadki_kraj.from_line(
+        "04.08.2020	4	8	2020	37	4	Afghanistan	AF	AFG	38041757	Asia	2,97567749")
     ob3 = Przypadki_kraj.from_data("01.05.2019", 45, 1, "DE")
 
     print str(ob1)
