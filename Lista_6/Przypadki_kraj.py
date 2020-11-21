@@ -33,6 +33,10 @@ class Przypadki_kraj:
 
         return True
 
+    def __check_and_swap_worst_day(self, day):
+        if day.get_deaths() > self.__worst_day.get_deaths():
+            self.__worst_day = day
+
     def add_day_line(self, line):
         temp_day = Covid_na_dzien.from_line(line)
         data_from_line = line.split()
@@ -46,6 +50,7 @@ class Przypadki_kraj:
                     return False
 
             self.__day_list.append(temp_day)
+            self.__check_and_swap_worst_day(temp_day)
             self.__cases_sum += temp_day.get_cases()
             self.__deaths_sum += temp_day.get_deaths()
             return True
@@ -53,7 +58,9 @@ class Przypadki_kraj:
 
     def add_day_data(self, date, cases, deaths):
         if self.__day_not_allready_exist(date):
-            self.__day_list.append(Covid_na_dzien.from_data(date, cases, deaths))
+            temp_day = Covid_na_dzien.from_data(date, cases, deaths)
+            self.__day_list.append(temp_day)
+            self.__check_and_swap_worst_day(temp_day)
             self.__deaths_sum += deaths
             self.__cases_sum += cases
 
