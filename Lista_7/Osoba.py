@@ -17,13 +17,19 @@ class Osoba:
         Osoba.idCounter += 1
 
     def __str__(self):
-        mystr = str(self._id) + ', '
+        mystr = str(self._id) + ', ' + self._surname + ', '
         for name in self._name_list:
             mystr += name + ', '
 
-        mystr += self._surname + ', ' + str(self._date)
+        mystr += str(self._date)
 
         return mystr
 
     def get_age_in_years(self):
         return relativedelta(date.today(), self._date).years
+
+    def get_surname_and_name(self):
+        mystr = self._surname
+        for name in self._name_list:
+            mystr += name + ', '
+        return mystr
