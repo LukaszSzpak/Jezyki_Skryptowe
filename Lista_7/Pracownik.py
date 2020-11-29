@@ -10,7 +10,7 @@ class Pracownik(Osoba):
         self.__publication_list = []
 
     def add_publication(self, publication_year, publication_score):
-        self.__publication_list.append((publication_year, publication_score))
+        self.__publication_list.append((int(publication_year), int(publication_score)))
 
     def get_score_sum_for_4_years(self):
         score_sum = 0
