@@ -25,3 +25,6 @@ class Student(Osoba):
 
     def __str__(self):
         return super().__str__() + ' Number of marks: ' + str(len(self.__mark_list))
+
+    def get_all_marks(self):
+        return self.__mark_list

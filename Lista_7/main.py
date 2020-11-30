@@ -105,3 +105,7 @@ if __name__ == '__main__':
     stud_list.sort(key=lambda student: student.get_average())
     for student in stud_list:
         print('Ocena: ' + str(student.get_average()) + ' |Dane: ' + str(student))
+
+    for student in stud_list:
+        if student.get_surname() == 'Ciech':
+            print(str(student.get_all_marks()) + ' Srednia: ' + str(student.get_average()))

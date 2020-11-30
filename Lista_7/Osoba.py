@@ -3,7 +3,7 @@ from dateutil.relativedelta import relativedelta
 
 
 class Osoba:
-    idCounter = 0
+    __idCounter = 0
 
     def __init__(self, names, surname, my_date):
         if type(names) is list and len(names) > 3:
@@ -12,9 +12,9 @@ class Osoba:
         self._name_list = (names if type(names) is list else [names])
         self._surname = surname
         self._date = date.fromisoformat(my_date)
-        self._id = Osoba.idCounter
+        self._id = Osoba.__idCounter
 
-        Osoba.idCounter += 1
+        Osoba.__idCounter += 1
 
     def __str__(self):
         mystr = str(self._id) + ', ' + self._surname + ', '
@@ -33,3 +33,6 @@ class Osoba:
         for name in self._name_list:
             mystr += name + ', '
         return mystr
+
+    def get_surname(self):
+        return self._surname
