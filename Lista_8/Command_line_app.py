@@ -5,7 +5,7 @@ import sys
 def print_help():
     print('Wywołanie aplikacji: \n'
           'python3 Command_line_app.py <zgony/zachorowania> <lokalizacja> <data_miesiac> <data_dzien>\n'
-          'zgony/zachorowania - pole wymagane\n'
+          'zgony/zachorowania - rodzaj, pole wymagane\n'
           'lokalizacja - pole wymagane swiat / "kontynent" / "kraj" \n'
           'data_miesiac - pole opcjonalne np. lipiec\n'
           'data_dzien - pole opcjonalne np. 06\n'
@@ -33,25 +33,33 @@ if __name__ == '__main__':
         elif arg_list[0] == 'zachorowania':
             print(app.check_location_and_get_cases(location=arg_list[1]))
         else:
-            print('Błędny wybór !')
+            print('Błędny wybór rodzaju!')
 
     elif len(arg_list) == 3:
         if arg_list[0] == 'zakres':
-            if not 1 <= int(arg_list[2]) <= 30:
+            if not arg_list[2].isdigit():
+                print('Zakres nie jest liczbą !')
+            elif not 1 <= int(arg_list[2]) <= 30:
                 print('Zakres dni poza skalą !')
             elif arg_list[1] == 'zgony':
-                print(app.get_max_deaths(int(arg_list[2])))
+                if len(arg_list[1]) == 1:
+                    print(app.get_max_deaths('0{0}'.format(arg_list[2])))
+                else:
+                    print(app.get_max_deaths(int(arg_list[2])))
             elif arg_list[1] == 'zachorowania':
-                print(app.get_max_cases(int(arg_list[2])))
+                if len(arg_list[1]) == 1:
+                    print(app.get_max_cases('0{0}'.format(arg_list[2])))
+                else:
+                    print(app.get_max_cases(int(arg_list[2])))
             else:
-                print('Błędny wybór !')
+                print('Błędny wybór rodzaju!')
         else:
             if arg_list[0] == 'zgony':
                 print(app.check_location_and_get_deaths(location=arg_list[1], date_month=arg_list[2]))
             elif arg_list[0] == 'zachorowania':
                 print(app.check_location_and_get_cases(location=arg_list[1], date_month=arg_list[2]))
             else:
-                print('Błędny wybór !')
+                print('Błędny wybór rodzaju!')
 
     elif len(arg_list) == 4:
         if arg_list[0] == 'zgony':
@@ -59,4 +67,4 @@ if __name__ == '__main__':
         elif arg_list[0] == 'zachorowania':
             print(app.check_location_and_get_cases(location=arg_list[1], date_month=arg_list[2], date_day=arg_list[3]))
         else:
-            print('Błędny wybór !')
+            print('Błędny wybór rodzaju!')
