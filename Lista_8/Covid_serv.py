@@ -1,5 +1,6 @@
 from itertools import islice
 from Name_data import Name_data
+from Day_data import Day_data
 
 FILE_PATH = "Covid19.txt"
 
@@ -103,6 +104,16 @@ class Covid_service:
 
         return sum_cases, sum_deaths
 
+    def get_world_dates(self):
+        world_dict = {}
+        for country in self.__country_dict.values():
+            for date, day in country.get().items():
+                if date in world_dict:
+                    world_dict[date].add(day.get_cases(), day.get_deaths())
+                else:
+                    world_dict[date] = Day_data(day.get_cases(), day.get_deaths())
+        return world_dict
+
     def get_country_month_deaths(self, country_name, month_name):
         return self.__country_dict[country_name].get_month_deaths(self.__get_month(month_name))
 
@@ -126,3 +137,12 @@ class Covid_service:
 
     def get_continent_day_deaths(self, continent_name, day, month_name):
         return self.__continent_dict[continent_name].get_day_deaths(self.__get_date(day, month_name))
+
+    def is_it_country(self, location):
+        return location in self.__country_dict.keys()
+
+    def is_it_continent(self, location):
+        return location in self.__continent_dict.keys()
+
+    def is_it_month(self, month_name):
+        return month_name in Covid_service.__month_dict
