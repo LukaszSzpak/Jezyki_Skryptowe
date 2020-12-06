@@ -29,3 +29,27 @@ class Name_data:
             sum += day.get_deaths()
 
         return sum
+
+    def get_month_cases(self, month):
+        sum = 0
+        for day_date, day_data in self.__date_dict.items():
+            split_date = day_date.split('.')
+            if split_date[1] == month:
+                sum += day_data.get_cases()
+
+        return sum
+
+    def get_month_deaths(self, month):
+        sum = 0
+        for day_date, day_data in self.__date_dict.items():
+            split_date = day_date.split('.')
+            if split_date[1] == month:
+                sum += day_data.get_deaths()
+
+        return sum
+
+    def get_day_cases(self, date):
+        return self.__date_dict[date].get_cases()
+
+    def get_day_deaths(self, date):
+        return self.__date_dict[date].get_deaths()
