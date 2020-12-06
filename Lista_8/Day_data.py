@@ -9,3 +9,9 @@ class Day_data:
 
     def get_tuple(self):
         return self.__cases, self.__deaths
+
+    def get_cases(self):
+        return self.__cases
+
+    def get_deaths(self):
+        return self.__deaths

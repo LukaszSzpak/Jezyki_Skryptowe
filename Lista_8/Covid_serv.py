@@ -41,3 +41,25 @@ class Covid_service:
 
     def get_continent(self, continent_name):
         return self.__continent_dict[continent_name]
+
+    def get_continent_cases(self, continent_name):
+        return self.__continent_dict[continent_name].get_sum_cases()
+
+    def get_continent_deaths(self, continent_name):
+        return self.__continent_dict[continent_name].get_sum_deaths()
+
+    def get_country_cases(self, country_name):
+        return self.__country_dict[country_name].get_sum_cases()
+
+    def get_country_deaths(self, country_name):
+        return self.__country_dict[country_name].get_sum_deaths()
+
+    def get_world_sum(self):
+        sum_cases = 0
+        sum_deaths = 0
+
+        for country in self.__country_dict.values():
+            sum_cases += country.get_sum_cases()
+            sum_deaths += country.get_sum_deaths()
+
+        return sum_cases, sum_deaths

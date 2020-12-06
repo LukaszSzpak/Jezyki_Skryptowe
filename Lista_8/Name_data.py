@@ -15,3 +15,17 @@ class Name_data:
 
     def get_day(self, date):
         return self.__date_dict[date]
+
+    def get_sum_cases(self):
+        sum = 0
+        for day in self.__date_dict.values():
+            sum += day.get_cases()
+
+        return sum
+
+    def get_sum_deaths(self):
+        sum = 0
+        for day in self.__date_dict.values():
+            sum += day.get_deaths()
+
+        return sum
