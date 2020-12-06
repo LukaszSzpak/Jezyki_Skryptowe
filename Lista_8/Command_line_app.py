@@ -9,10 +9,10 @@ def print_help():
           'lokalizacja - pole wymagane swiat / "kontynent" / "kraj" \n'
           'data_miesiac - pole opcjonalne np. lipiec\n'
           'data_dzien - pole opcjonalne np. 06\n'
-          'pole dzien nie może wysępować bez miesiąca !'
+          'pole dzien nie może wysępować bez miesiąca !\n'
           'lub\n'
           'python3 Command_line_app.py zakres <zgony/zachorowania> <ilosc_dni>\n'
-          'ilosc_dni - pole wymagane od 1 do 30/n'
+          'ilosc_dni - pole wymagane od 1 do 30\n'
           'zgony/zachorowania - pole wymagane\n'
           )
 
