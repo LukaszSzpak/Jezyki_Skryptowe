@@ -13,6 +13,9 @@ class Znaczniki:
         self.__string_list = []
         self.__add_regex = re.compile(r'^((?!_)\w)*_?((?!_)\w)*_?((?!_)\w)*$')
 
+    def get_all(self):
+        return self.__string_list
+
     def add_string(self, string):
         if string in self.__string_list:
             return False
@@ -42,7 +45,7 @@ class Znaczniki:
             if get_string in self.__string_list:
                 return_string_list.append(get_string)
 
-        return  return_string_list
+        return return_string_list
 
     def get_rejected(self, string_list):
         return np.setdiff1d(string_list, self.get_accepted(string_list))
