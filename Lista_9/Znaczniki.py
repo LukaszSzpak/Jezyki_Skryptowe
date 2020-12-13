@@ -20,7 +20,7 @@ class Znaczniki:
         if self.__add_regex.match(string) is None:
             return False
 
-        if string < Znaczniki.__MIN_DL or string > Znaczniki.__MAX_DL:
+        if len(string) < Znaczniki.__MIN_DL or len(string) > Znaczniki.__MAX_DL:
             return False
 
         self.__string_list.append(string)
@@ -33,7 +33,7 @@ class Znaczniki:
             if calc_lev_sim(reg_string, string) <= editing_distnace:
                 return_string_list.append(string)
 
-            return return_string_list
+        return return_string_list
 
     def get_accepted(self, string_list):
         return_string_list = []
