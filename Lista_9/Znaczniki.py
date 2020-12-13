@@ -52,5 +52,5 @@ class Znaczniki:
             pickle.dump(self.__string_list, output, pickle.HIGHEST_PROTOCOL)
 
     def open(self):
-        with open(Znaczniki.__FILENAME, 'wb') as infile:
+        with open(Znaczniki.__FILENAME, 'rb') as infile:
             self.__string_list = pickle.load(infile)
