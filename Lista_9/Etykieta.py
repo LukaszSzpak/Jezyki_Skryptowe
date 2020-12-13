@@ -43,7 +43,7 @@ class Etykieta:
         return Etykieta(return_list)
 
     def __eq__(self, other):
-        return self.get_all_strings().sort() == other.get_all_strings().sort()
+        return set(self.get_all_strings()) == set(other.get_all_strings())
 
     def __ge__(self, other):
         return all(x in self.get_all_strings() for x in other.get_all_strings())
